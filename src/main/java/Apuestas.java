@@ -5,20 +5,24 @@ public class Apuestas {
     private static int currentScreen = 0;
     private static int userId = -1;
     private static String username = "";
+    public static final String green = "\u001B[32m";
+    public static final String reset = "\u001B[0m";
+    public static final String blue = "\u001B[34m";
+
 
     public static void main(String[] args) throws SQLException{
         int option;
         String host = "jdbc:sqlite:src/main/resources/Apuestas";
         con = java.sql.DriverManager.getConnection( host );
         System.out.println();
-        System.out.println("$$\\      $$\\ $$$$$$$$\\ $$\\       $$$$$$\\   $$$$$$\\  $$\\      $$\\ $$$$$$$$\\ \n" +
+        System.out.println(green + "$$\\      $$\\ $$$$$$$$\\ $$\\       $$$$$$\\   $$$$$$\\  $$\\      $$\\ $$$$$$$$\\ \n" +
                 "$$ | $\\  $$ |$$  _____|$$ |     $$  __$$\\ $$  __$$\\ $$$\\    $$$ |$$  _____|\n" +
                 "$$ |$$$\\ $$ |$$ |      $$ |     $$ /  \\__|$$ /  $$ |$$$$\\  $$$$ |$$ |      \n" +
                 "$$ $$ $$\\$$ |$$$$$\\    $$ |     $$ |      $$ |  $$ |$$\\$$\\$$ $$ |$$$$$\\    \n" +
                 "$$$$  _$$$$ |$$  __|   $$ |     $$ |      $$ |  $$ |$$ \\$$$  $$ |$$  __|   \n" +
                 "$$$  / \\$$$ |$$ |      $$ |     $$ |  $$\\ $$ |  $$ |$$ |\\$  /$$ |$$ |      \n" +
                 "$$  /   \\$$ |$$$$$$$$\\ $$$$$$$$\\\\$$$$$$  | $$$$$$  |$$ | \\_/ $$ |$$$$$$$$\\ \n" +
-                "\\__/     \\__|\\________|\\________|\\______/  \\______/ \\__|     \\__|\\________|");
+                "\\__/     \\__|\\________|\\________|\\______/  \\______/ \\__|     \\__|\\________|" + reset);
         while (true){
             printMenu();
             option = getOption();
@@ -58,13 +62,13 @@ public class Apuestas {
         return option;
     }
     private static void printMenu(){
-        System.out.println("----------------------------------------------------------------------------");
+        System.out.println(blue + "----------------------------------------------------------------------------");
         if (currentScreen == 0){
             System.out.println("[0] Exit | [1] Login | [2] Register");
         }else{
             System.out.println("[0] Exit | [1] My Bets | [2] New Bet | [3] User Info | [4] Logout " + username);
         }
-        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------" + reset);
     }
     private static void login() throws SQLException{
         Scanner sc = new Scanner(System.in);
